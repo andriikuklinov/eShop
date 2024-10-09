@@ -16,15 +16,9 @@ namespace Catalog.DAL.DataContext
         }
 
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name= "Accumulators" },
-                new Category { Id = 2, Name= "Tires"}
-            );
-
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Name = "tire 24 67 78", Summary = "tire 24 67 78", Price = 860.89m, CategoryId = 2 },
                 new Product { Id = 2, Name = "tire 21 60 77", Summary = "tire 21 60 77", Price = 849.11m, CategoryId = 2 },
