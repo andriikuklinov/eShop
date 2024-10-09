@@ -16,9 +16,13 @@ namespace Catalog.DAL.DataContext
         }
 
         public virtual DbSet<Product> Products { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>().Property(_ => _.Name).HasMaxLength(50);
+            modelBuilder.Entity<Product>().Property(_ => _.Summary).HasMaxLength(500);
+            modelBuilder.Entity<Product>().Property(_ => _.ImageSrc).HasMaxLength(30);
+            modelBuilder.Entity<Product>().Property(_ => _.Price).HasPrecision(18, 2);
+
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Name = "tire 24 67 78", Summary = "tire 24 67 78", Price = 860.89m, CategoryId = 2 },
                 new Product { Id = 2, Name = "tire 21 60 77", Summary = "tire 21 60 77", Price = 849.11m, CategoryId = 2 },
