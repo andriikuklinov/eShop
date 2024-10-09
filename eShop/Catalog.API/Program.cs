@@ -1,3 +1,5 @@
+using Catalog.API.MappingProfile;
+using Catalog.BLL.MappingProfile;
 using Catalog.DAL.DataContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(configuration =>
+{
+    configuration.AddProfile(new ApiMappingProfile());
+    configuration.AddProfile(new BllMappingProfile());
+});
 builder.Services.AddDbContext<CatalogDataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Catalog.DAL"), optionBuilder =>
