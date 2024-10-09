@@ -9,6 +9,6 @@ namespace Catalog.DAL.Repositories.Contract
 {
     public interface IProductRepository
     {
-        
+        Task<IEnumerable<Product>> GetProducts(string filter, string orderBy, int? page, int? pageSize);
     }
 }
