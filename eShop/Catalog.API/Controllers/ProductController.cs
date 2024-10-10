@@ -53,5 +53,23 @@ namespace Catalog.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductModel product)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    var productResult = _mapper.Map<ProductModel>(await _productService.UpdateProduct(_mapper.Map<ProductDTO>(product)));
+                    return Ok(new ApiResponse<ProductModel>( productResult));
+                }
+                return BadRequest(new ApiResponse<IEnumerable<ModelError>>(ModelState.Values.SelectMany(value => value.Errors)));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
     }
 }
