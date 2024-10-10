@@ -16,11 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 #endregion
+#region Automapper
 builder.Services.AddAutoMapper(configuration =>
 {
     configuration.AddProfile(new ApiMappingProfile());
     configuration.AddProfile(new BllMappingProfile());
 });
+#endregion
+#region DbContext
 builder.Services.AddDbContext<CatalogDataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Catalog.DAL"), optionBuilder =>
@@ -28,9 +31,11 @@ builder.Services.AddDbContext<CatalogDataContext>(options =>
         optionBuilder.MigrationsAssembly("Catalog.DAL");
     });
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+#endregion
+#region Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+#endregion
 
 var app = builder.Build();
 
@@ -38,7 +43,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(config =>
+    {
+        config.SwaggerEndpoint("/swagger/catalog/swagger.json", "Catalog API v1");
+    });
 }
 
 app.UseAuthorization();
