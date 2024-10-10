@@ -4,6 +4,7 @@ using Catalog.BLL.DTO;
 using Catalog.BLL.Services.Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Catalog.API.Controllers
 {
@@ -28,6 +29,24 @@ namespace Catalog.API.Controllers
                     await _productService.GetProducts(filter, orderBy, page, pageSize)
                 );
                 return Ok(new ApiResponse<IEnumerable<ProductModel>>(products));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct([FromBody] ProductModel product)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var productResult = _mapper.Map<ProductModel>(await _productService.CreateProduct(_mapper.Map<ProductDTO>(product)));
+                    return Ok(new ApiResponse<ProductModel>(productResult));
+                }
+                return BadRequest(new ApiResponse<IEnumerable<ModelError>>(ModelState.Values.SelectMany(value => value.Errors)));
             }
             catch (Exception ex)
             {

@@ -11,5 +11,8 @@ namespace Catalog.BLL.Services.Contract
     public interface IProductService
     {
         Task<IEnumerable<ProductDTO>> GetProducts(string filter, string orderBy, int? page, int? pageSize);
+        Task<ProductDTO> CreateProduct(ProductDTO productDTO);
+        Task<ProductDTO> UpdateProduct(ProductDTO productDTO);
+        Task<ProductDTO> DeleteProduct(ProductDTO productDto);
     }
 }

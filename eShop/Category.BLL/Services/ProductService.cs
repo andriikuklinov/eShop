@@ -28,5 +28,20 @@ namespace Catalog.BLL.Services
                 await _repository.GetProducts(filter, orderBy, page, pageSize)
             );
         }
+        public async Task<ProductDTO> CreateProduct(ProductDTO productDTO)
+        {
+            var product = await _repository.AddAsync(_mapper.Map<Product>(productDTO));
+            return _mapper.Map<ProductDTO>(product);
+        }
+        public async Task<ProductDTO> UpdateProduct(ProductDTO productDTO)
+        {
+            var product = await _repository.UpdateAsync(_mapper.Map<Product>(productDTO));
+            return _mapper.Map<ProductDTO>(product);
+        }
+        public async Task<ProductDTO> DeleteProduct(ProductDTO productDto)
+        {
+            var product = await _repository.DeleteAsync(_mapper.Map<Product>(productDto));
+            return _mapper.Map<ProductDTO>(product);
+        }
     }
 }
