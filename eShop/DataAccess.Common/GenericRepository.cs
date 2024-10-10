@@ -57,11 +57,9 @@ namespace DataAccess.Common
             return entities;
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> GetAll()
         {
-            if (predicate == null)
-                return _context.Set<T>().AsQueryable<T>();
-            return _context.Set<T>().Where(predicate);
+            return _context.Set<T>().AsQueryable<T>();
         }
 
         public async Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
