@@ -1,12 +1,22 @@
+using Basket.BLL.Services;
+using Basket.BLL.Services.Contract;
+using Basket.DAL.Repositories;
+using Basket.DAL.Repositories.Contract;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
