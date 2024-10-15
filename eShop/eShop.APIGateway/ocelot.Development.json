@@ -17,7 +17,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/Product/AddProduct",
@@ -36,7 +37,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/Product/UpdateProduct",
@@ -55,7 +57,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/Product/DeleteProduct",
@@ -74,7 +77,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/GetShoppingCart",
@@ -93,7 +97,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/UpdateShoppingCart",
@@ -112,7 +117,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/DeleteShoppingCart",
@@ -131,7 +137,8 @@
         "Period”": "2s",
         "PeriodTimespan": 10,
         "Limit": 1
-      }
+      },
+      "FileCacheoptions": { "TtlSeconds": 20 }
     }
   ],
   "GlobalConfiguration": {
