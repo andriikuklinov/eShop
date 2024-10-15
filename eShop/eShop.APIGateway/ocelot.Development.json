@@ -10,7 +10,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Product/GetProducts",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Product/AddProduct",
@@ -22,7 +29,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Product/AddProduct",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Product/UpdateProduct",
@@ -34,7 +48,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Product/UpdateProduct",
-      "UpstreamHttpMethod": [ "PUT" ]
+      "UpstreamHttpMethod": [ "PUT" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Product/DeleteProduct",
@@ -46,7 +67,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Product/DeleteProduct",
-      "UpstreamHttpMethod": [ "DELETE" ]
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/GetShoppingCart",
@@ -58,7 +86,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/ShoppingCart/GetShoppingCart",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/UpdateShoppingCart",
@@ -70,7 +105,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/ShoppingCart/UpdateShoppingCart",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/ShoppingCart/DeleteShoppingCart",
@@ -82,7 +124,14 @@
         }
       ],
       "UpstreamPathTemplate": "/api/ShoppingCart/DeleteShoppingCart",
-      "UpstreamHttpMethod": [ "DELETE" ]
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period”": "2s",
+        "PeriodTimespan": 10,
+        "Limit": 1
+      }
     }
   ],
   "GlobalConfiguration": {
