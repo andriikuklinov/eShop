@@ -19,7 +19,7 @@ namespace eShop.Aggregator.Services
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<CatalogModel>> GetProducts(string? filter, string? orderBy, int? page, int? pageSize)
+        public async Task<IEnumerable<CatalogModel>> GetProducts(string? filter=null, string? orderBy=null, int? page=null, int? pageSize=null)
         {
             var response = await _httpClient.GetAsync($"/api/Product/GetProducts?filter={filter}&orderBy={orderBy}&page={page}&pageSize={pageSize}");
             return await response.Content.ReadFromJsonAsync<List<CatalogModel>>();

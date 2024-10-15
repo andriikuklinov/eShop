@@ -9,6 +9,6 @@ namespace eShop.Aggregator.Contracts
 {
     public interface ICatalogService
     {
-        Task<IEnumerable<CatalogModel>> GetProducts(string? filter, string? orderBy, int? page, int? pageSize);
+        Task<IEnumerable<CatalogModel>> GetProducts(string? filter=null, string? orderBy=null, int? page=null, int? pageSize=null);
     }
 }
