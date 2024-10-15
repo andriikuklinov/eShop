@@ -1,3 +1,5 @@
+using eShop.Aggregator.Contracts;
+using eShop.Aggregator.Services;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -14,6 +16,10 @@ builder.Services.AddOcelot().AddCacheManager(settings=>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
+#region DI Services
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(config=> config.BaseAddress = new Uri(builder.Configuration["ApiSettings:CatalogURL"]));
+builder.Services.AddHttpClient<IBasketService, BasketService>(config => config.BaseAddress = new Uri(builder.Configuration["ApiSettings:BasketURL"]));
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
