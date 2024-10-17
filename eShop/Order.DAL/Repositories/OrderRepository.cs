@@ -22,7 +22,8 @@ namespace Order.DAL.Repositories
 
         public async Task<IEnumerable<Entities.Order>> GetOrders(int userId)
         {
-            return await GetAll().Filter($"{{\"data\":[{{\"PropertyName\":\"UserId\",\"Value\":\"{userId}\"}}]}}").ToListAsync<Entities.Order>();
+            return await GetAll().Include(_=>_.OrderItems).Filter<Entities.Order, int>($"{{\"data\":[{{\"PropertyName\":\"UserId\",\"Value\":\"{userId}\"}}]}}")
+                .ToListAsync<Entities.Order>();
         }
     }
 }
