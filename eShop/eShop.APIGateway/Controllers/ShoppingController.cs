@@ -1,5 +1,5 @@
 ﻿using eShop.Aggregator.Contracts;
-using Microsoft.AspNetCore.Http;
+using eShop.APIGateway.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShop.APIGateway.Controllers
@@ -18,7 +18,7 @@ namespace eShop.APIGateway.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult<ShoppingModel>> GetShopping(string userName)
+        public async Task<IActionResult> GetShopping(string userName)
         {
             var basket = await _basketService.GetShoppingCart(userName);
 
@@ -31,6 +31,8 @@ namespace eShop.APIGateway.Controllers
                     basketItem.ProductName = product.Name;
                 }
             }
+
+            return Ok();
         }
     }
 }
