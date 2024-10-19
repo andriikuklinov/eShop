@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Discount.BLL.Services.Contract
 {
-    internal interface ICouponService
+    public interface ICouponService
     {
         Task<CouponDTO> GetDiscount(int productId);
         Task<CouponDTO> CreateDiscount(CouponDTO coupon);
