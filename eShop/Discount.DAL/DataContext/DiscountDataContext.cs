@@ -19,8 +19,8 @@ namespace Discount.DAL.DataContext
         {
             modelBuilder.Entity<Coupon>().HasData(
                 new Coupon { Id = 1, ProductId = 1, DiscountPercentage = 25, Description = "test description Tire" },
-                new Coupon { Id = 1, ProductId = 4, DiscountPercentage = 15, Description = "test description AGM" },
-                new Coupon { Id = 1, ProductId = 5, DiscountPercentage = 5, Description = "test description AGM" }
+                new Coupon { Id = 2, ProductId = 4, DiscountPercentage = 15, Description = "test description AGM" },
+                new Coupon { Id = 3, ProductId = 5, DiscountPercentage = 5, Description = "test description AGM" }
             );
         }
     }
