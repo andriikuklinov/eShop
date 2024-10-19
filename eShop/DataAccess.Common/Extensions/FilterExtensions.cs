@@ -5,24 +5,29 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DataAccess.Common.Extensions
 {
     public static class FilterExtensions
     {
-        public static IQueryable<T> Filter<T>(this IQueryable<T> query, string filter)
+        public static IQueryable<T> Filter<T, TFilterValue>(this IQueryable<T> query, string filter)
         {
             if (!string.IsNullOrEmpty(filter))
             {
-                var filterData = JsonSerializer.Deserialize<FilterData>(filter, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                var filterData = JsonSerializer.Deserialize<FilterData<TFilterValue>>(filter, new JsonSerializerOptions() 
+                { 
+                    PropertyNameCaseInsensitive = true,
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
+                });
                 var parameter = Expression.Parameter(typeof(T), "_");
 
                 Expression filterExpression = null;
                 foreach (var filterModel in filterData.Data)
                 {
                     var property = Expression.Property(parameter, filterModel.PropertyName);
-                    var constant = Expression.Constant(filterModel.Value);
+                    var constant = Expression.Constant(filterModel.Value, typeof(TFilterValue));
                     Expression comparison = null;
                     if (property.Type == typeof(string))
                     {
