@@ -3,6 +3,7 @@ using Catalog.DAL.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Catalog.DAL.Migrations
 {
     [DbContext(typeof(CatalogDataContext))]
-    partial class CatalogDataContextModelSnapshot : ModelSnapshot
+    [Migration("20241019192449_AddNewFieldsToProduct")]
+    partial class AddNewFieldsToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,6 +57,15 @@ namespace Catalog.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("RetailPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -82,6 +94,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "XCV 123x238x16",
+                            Name = "tire 24 67 78",
+                            Price = 860.89m,
                             RetailPrice = 220.00m,
                             Season = "Winter",
                             Summary = "tire 24 67 78",
@@ -96,6 +110,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "FG 12x43x56",
+                            Name = "tire 21 60 77",
+                            Price = 849.11m,
                             RetailPrice = 210.00m,
                             Season = "Summer",
                             Summary = "tire 21 60 77",
@@ -110,6 +126,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "HG 12x32x34",
+                            Name = "tire 27 64 79",
+                            Price = 890.00m,
                             RetailPrice = 212.00m,
                             Season = "Winter",
                             Summary = "tire 27 64 79",
@@ -124,6 +142,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "GF124G",
+                            Name = "AGM 26 78",
+                            Price = 890.00m,
                             RetailPrice = 102.00m,
                             Summary = "AGM 26 78",
                             WholesalePrice = 99.99m
@@ -137,6 +157,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "LC224X",
+                            Name = "AGM 66 78 98",
+                            Price = 811.09m,
                             RetailPrice = 99.00m,
                             Summary = "AGM 66 78 98",
                             WholesalePrice = 91.99m
@@ -150,6 +172,8 @@ namespace Catalog.DAL.Migrations
                             Count = 10,
                             FreeCount = 7,
                             Model = "JS994M",
+                            Name = "AGM 11 66 77",
+                            Price = 890.10m,
                             RetailPrice = 98.00m,
                             Summary = "AGM 11 66 77",
                             WholesalePrice = 92.0m
