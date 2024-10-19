@@ -1,9 +1,20 @@
+using Discount.DAL.DataContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+#region DbContext
+builder.Services.AddDbContext<DiscountDataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Discount.DAL"), optionBuilder =>
+    {
+        optionBuilder.MigrationsAssembly("Discount.DAL");
+    });
+});
+#endregion
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
