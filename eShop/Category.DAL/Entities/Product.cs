@@ -16,8 +16,6 @@ namespace Catalog.DAL.Entities
         public string Model { get; set; }
         public string? Season { get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
         public string Summary { get; set; }
         public string? ImageSrc { get; set; }
         [Required]
@@ -29,8 +27,6 @@ namespace Catalog.DAL.Entities
         public int FreeCount { get; set; }
         [Required]
         public string Code { get; set; }
-        [Required]
-        public decimal Price { get; set; }
         public int CategoryId { get; set; }
     }
 }
