@@ -16,7 +16,7 @@ namespace Catalog.DAL.Repositories
 
         public async Task<IEnumerable<Product>> GetProducts(string filter, string orderBy, int? page, int? pageSize)
         {
-            return await GetAll().Filter(filter).OrderBy(orderBy).Paginate(page, pageSize).ToListAsync<Product>();
+            return await GetAll().Filter<Product, string>(filter).OrderBy(orderBy).Paginate(page, pageSize).ToListAsync<Product>();
         }
     }
 }

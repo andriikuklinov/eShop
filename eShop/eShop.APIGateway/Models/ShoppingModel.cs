@@ -6,6 +6,6 @@ namespace eShop.APIGateway.Models
     {
         public BasketModel Basket { get; set; }
         public string UserName { get; set; }
-        public IEnumerable<> Orders { get; set; }
+        public IEnumerable<object> Orders { get; set; }
     }
 }
