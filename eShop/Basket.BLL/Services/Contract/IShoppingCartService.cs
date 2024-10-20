@@ -1,4 +1,5 @@
-﻿using Basket.DAL.Entities;
+﻿using Basket.BLL.DTO;
+using Basket.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Basket.BLL.Services.Contract
         Task<ShoppingCart?> GetShoppingCart(string userName);
         Task<ShoppingCart?> UpdateShoppingCart(ShoppingCart cart);
         Task DeleteShoppingCart(string userName);
+        Task Checkout(CheckoutDTO checkoutDto);
     }
 }
