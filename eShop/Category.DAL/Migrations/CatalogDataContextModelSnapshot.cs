@@ -29,26 +29,44 @@ namespace Catalog.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FreeCount")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageSrc")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
+                    b.Property<decimal>("RetailPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Season")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<decimal>("WholesalePrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -58,50 +76,83 @@ namespace Catalog.DAL.Migrations
                         new
                         {
                             Id = 1,
+                            Brand = "TOYO",
                             CategoryId = 2,
-                            Name = "tire 24 67 78",
-                            Price = 860.89m,
-                            Summary = "tire 24 67 78"
+                            Code = "234hgjX",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "XCV 123x238x16",
+                            RetailPrice = 220.00m,
+                            Season = "Winter",
+                            Summary = "tire 24 67 78",
+                            WholesalePrice = 99.99m
                         },
                         new
                         {
                             Id = 2,
+                            Brand = "TOYO",
                             CategoryId = 2,
-                            Name = "tire 21 60 77",
-                            Price = 849.11m,
-                            Summary = "tire 21 60 77"
+                            Code = "234hgjX1",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "FG 12x43x56",
+                            RetailPrice = 210.00m,
+                            Season = "Summer",
+                            Summary = "tire 21 60 77",
+                            WholesalePrice = 97.00m
                         },
                         new
                         {
                             Id = 3,
+                            Brand = "TOYO",
                             CategoryId = 2,
-                            Name = "tire 27 64 79",
-                            Price = 890.00m,
-                            Summary = "tire 27 64 79"
+                            Code = "234hgjv2",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "HG 12x32x34",
+                            RetailPrice = 212.00m,
+                            Season = "Winter",
+                            Summary = "tire 27 64 79",
+                            WholesalePrice = 98.9m
                         },
                         new
                         {
                             Id = 4,
+                            Brand = "Bosh",
                             CategoryId = 1,
-                            Name = "AGM 26 78",
-                            Price = 890.00m,
-                            Summary = "AGM 26 78"
+                            Code = "234hg21m",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "GF124G",
+                            RetailPrice = 102.00m,
+                            Summary = "AGM 26 78",
+                            WholesalePrice = 99.99m
                         },
                         new
                         {
                             Id = 5,
+                            Brand = "Bosh",
                             CategoryId = 1,
-                            Name = "AGM 66 78 98",
-                            Price = 811.09m,
-                            Summary = "AGM 66 78 98"
+                            Code = "67nbbb7",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "LC224X",
+                            RetailPrice = 99.00m,
+                            Summary = "AGM 66 78 98",
+                            WholesalePrice = 91.99m
                         },
                         new
                         {
                             Id = 6,
+                            Brand = "Bosh",
                             CategoryId = 1,
-                            Name = "AGM 11 66 77",
-                            Price = 890.10m,
-                            Summary = "AGM 11 66 77"
+                            Code = "46bfhj7X",
+                            Count = 10,
+                            FreeCount = 7,
+                            Model = "JS994M",
+                            RetailPrice = 98.00m,
+                            Summary = "AGM 11 66 77",
+                            WholesalePrice = 92.0m
                         });
                 });
 #pragma warning restore 612, 618
