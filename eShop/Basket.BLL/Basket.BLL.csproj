@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MassTransit" Version="8.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Basket.DAL\Basket.DAL.csproj" />
+    <ProjectReference Include="..\EventBus.Messages.Common\EventBus.Messages.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MassTransit" Version="8.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EventBus.Messages.Common\EventBus.Messages.Common.csproj" />
     <ProjectReference Include="..\Order.DAL\Order.DAL.csproj" />
   </ItemGroup>
 

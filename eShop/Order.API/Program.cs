@@ -1,5 +1,7 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Order.API.MappingProfile;
+using Order.BLL.EventBusConsumer;
 using Order.BLL.MappingProfile;
 using Order.BLL.Services;
 using Order.BLL.Services.Contract;
@@ -35,6 +37,21 @@ builder.Services.AddDbContext<OrderDataContext>(options =>
 #region Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+#endregion
+#region MassTransit and RabbitMQ
+builder.Services.AddMassTransit(config =>
+{
+    config.AddConsumer<BasketCheckoutConsumer>();
+    config.UsingRabbitMq((context, configuration) =>
+    {
+        configuration.Host(builder.Configuration.GetValue<string>("EventBusSettings:Host"));
+        configuration.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c =>
+        {
+            c.ConfigureConsumer<BasketCheckoutConsumer>(context);
+        });
+    });
+});
+//builder.Services.AddMassTransitHostedService();
 #endregion
 
 var app = builder.Build();
